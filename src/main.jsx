@@ -10,8 +10,10 @@ import {
 import { Provider } from "react-redux";
 import store from "./redux/store.js";
 import { lazy, Suspense } from "react";
+import ProductList from "./components/productComponents/ProductList.jsx";
+import NotFound from "./components/NotFound.jsx"; 
 
-// lazy load components to improve performance
+// Lazy load components to improve performance
 const Cart = lazy(() => import("./components/cartComponents/Cart.jsx"));
 const ProductDetails = lazy(() =>
   import("./components/productComponents/ProductDetails.jsx")
@@ -20,7 +22,7 @@ const Checkout = lazy(() => import("./components/CheckOut.jsx"));
 const OrderConfirmation = lazy(() => import("./components/OrderConfirmation.jsx"));
 const Error = lazy(() => import("./components/Error.jsx"));
 
-// define app routes using react router
+// Define app routes using react router
 const appRoutes = createBrowserRouter([
   {
     path: "/",
@@ -28,66 +30,67 @@ const appRoutes = createBrowserRouter([
     children: [
       {
         index: true,
-        // redirect root to /home
+        // Redirect root to /home
         element: <Navigate to="/home" replace />,
       },
       {
         path: "/home",
-        // load product list
+        // Load product list
         element: <ProductList />,
       },
       {
         path: "/cart",
-        // lazy load cart with fallback
+        // Lazy load cart with fallback
         element: (
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={<div>Loading cart...</div>}>
             <Cart />
           </Suspense>
         ),
       },
       {
         path: "/productDetails/:id",
-        // lazy load product details with fallback
+        // Lazy load product details with fallback
         element: (
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={<div>Loading product details...</div>}>
             <ProductDetails />
           </Suspense>
         ),
       },
       {
         path: "/checkout",
-        // lazy load checkout with fallback
+        // Lazy load checkout with fallback
         element: (
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={<div>Loading checkout...</div>}>
             <Checkout />
           </Suspense>
         ),
       },
       {
         path: "/orderConfirmation",
-        // lazy load order confirmation with fallback
+        // Lazy load order confirmation with fallback
         element: (
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={<div>Loading order confirmation...</div>}>
             <OrderConfirmation />
           </Suspense>
         ),
       },
+      {
+        path: "*", 
+        element: <NotFound />, 
+      },
     ],
-    // lazy load error page
+    // Lazy load error page
     errorElement: (
-      <Suspense fallback={<div>loading...</div>}>
+      <Suspense fallback={<div>Loading error page...</div>}>
         <Error />
       </Suspense>
     ),
   },
 ]);
 
-// render the app in the root element
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    {/* wrap the app with redux provider */}
     <Provider store={store}>
-      {/* router provider to manage routes */}
       <RouterProvider router={appRoutes} />
     </Provider>
   </StrictMode>
