@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 
 /**
- * custom hook to fetch a single product by id.
- * 
  * @param {string} url - the api endpoint to fetch the product.
  * @param {number} id - the id of the product to fetch.
  * @returns {Object} - product data, loading state, and error.
@@ -20,7 +18,8 @@ export const useFetchSingleProduct = (url, id = null) => {
                     throw new Error('failed to fetch product');
                 }
                 const data = await response.json();
-                setProduct(data); // set product data from api response
+                // set product data from api response
+                setProduct(data); 
             } catch (err) {
                 // handle errors
                 if (err instanceof TypeError) {
@@ -29,12 +28,12 @@ export const useFetchSingleProduct = (url, id = null) => {
                     setError(err.message);
                 }
             } finally {
-                setIsLoading(false); // done loading
+                setIsLoading(false);
             }
         };
 
-        if (id) fetchProduct(); // fetch product only if id is provided
-    }, [url, id]); // run effect when url or id changes
+        if (id) fetchProduct();
+    }, [url, id]); 
 
-    return { product, isloading, error }; // return product, loading, and error
+    return { product, isloading, error }; 
 };

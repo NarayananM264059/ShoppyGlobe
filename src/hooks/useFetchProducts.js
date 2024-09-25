@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 /**
- * custom hook to fetch products from a url.
  * 
  * @param {string} url - the api endpoint to fetch products.
  * @returns {Object} - products, loading state, and error.
@@ -19,7 +18,8 @@ export const useFetchProducts = (url) => {
                     throw new Error('failed to fetch products');
                 }
                 const data = await response.json();
-                setProducts(data.products); // set products from api data
+                 // set products from api data
+                setProducts(data.products);
             } catch (err) {
                 // handle errors
                 if (err instanceof TypeError) {
