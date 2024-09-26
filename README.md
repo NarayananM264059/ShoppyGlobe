@@ -53,6 +53,7 @@ To run ShoppyGlobe locally, follow these steps:
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Demo
+## Github Link
+https://github.com/NarayananM264059/ShoppyGlobe
 
 
