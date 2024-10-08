@@ -21,6 +21,8 @@ const ProductDetails = lazy(() =>
 const Checkout = lazy(() => import("./components/CheckOut.jsx"));
 const OrderConfirmation = lazy(() => import("./components/OrderConfirmation.jsx"));
 const Error = lazy(() => import("./components/Error.jsx"));
+const Login = lazy(() => import("./components/Login.jsx")); // Lazy load Login
+const Register = lazy(() => import("./components/Register.jsx")); // Lazy load Register
 
 // Define app routes using react router
 const appRoutes = createBrowserRouter([
@@ -71,6 +73,24 @@ const appRoutes = createBrowserRouter([
         element: (
           <Suspense fallback={<div>Loading order confirmation...</div>}>
             <OrderConfirmation />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/login",
+        // Lazy load login with fallback
+        element: (
+          <Suspense fallback={<div>Loading login...</div>}>
+            <Login />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/register",
+        // Lazy load register with fallback
+        element: (
+          <Suspense fallback={<div>Loading register...</div>}>
+            <Register />
           </Suspense>
         ),
       },
