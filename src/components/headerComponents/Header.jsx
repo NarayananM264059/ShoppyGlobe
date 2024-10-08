@@ -14,7 +14,6 @@ const Header = () => {
                 <h1 className="text-white text-3xl font-semibold tracking-wide">ShopEase</h1>
             </div>
 
-            {/* Navigation Links and Cart icon */}
             <nav className="flex items-center space-x-4">
                 <Link className="text-white text-lg hover:text-yellow-300 transition duration-300 ease-in-out" to="/">Home</Link>
                 <Link className="text-white text-lg hover:text-yellow-300 transition duration-300 ease-in-out" to="/login">Login</Link>
