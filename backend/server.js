@@ -8,6 +8,7 @@ import dotenv from 'dotenv';
 
 // Load environment variables from .env file
 dotenv.config();
+console.log('JWT_SECRET:', process.env.JWT_SECRET);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -27,6 +28,3 @@ app.use('/api/auth', authRoutes);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-// Debugging output for MongoDB URI
-console.log('Mongo URI:', process.env.MONGO_URI);
