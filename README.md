@@ -91,7 +91,6 @@ You can use tools like ThunderClient (VSCode extension) or Postman to test the A
 ### Products:
 - **GET /products**: Fetch a list of all products.
 - **GET /products/:id**: Fetch details of a single product by ID.
-- **POST /products**: Add a new product (admin only).
 
 ### Cart:
 - **POST /cart**: Add an item to the shopping cart.
